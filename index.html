@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>INICIO</title>
+  <meta name="description" content="Página de contato estilo cyberpunk / retro — Instagram, WhatsApp e Telegram" />
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(circle at 10% 10%, rgba(255,0,150,0.06), transparent 10%),
+                  radial-gradient(circle at 90% 90%, rgba(0,200,255,0.03), transparent 10%),
+                  #05060a;
+      color: #e6f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .grid {
+      position: fixed; inset: 0; opacity: 0.06;
+      background-image:
+        linear-gradient(180deg, rgba(0,255,200,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,200,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+    .scanlines {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      opacity: 0.06;
+      background-image: linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 100% 4px;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 920px;
+      border-radius: 16px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(8,10,20,0.6), rgba(4,4,8,0.55));
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      border: 1px solid rgba(120,0,180,0.12);
+    }
+
+    .header {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .avatar {
+      width: 112px; height: 112px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0ff, #f0f);
+      display: grid; place-items: center;
+      color: #040405; font-weight: 700;
+      font-size: 28px; letter-spacing: 0.6px;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .title { flex: 1; }
+
+    .neon-green {
+      color: #00ffae;
+      text-shadow: 0 0 6px #00ffae, 0 0 12px #00ffae;
+      animation: neon-pulse 2s infinite alternate;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+      color: #00ffae;
+      text-shadow: 0 0 6px #00ffae, 0 0 12px #00ffae;
+      animation: neon-pulse 2s infinite alternate;
+    }
+    p.lead { color: #cbe7ff88; }
+
+    .neon-bar {
+      height: 6px;
+      border-radius: 999px;
+      margin: 12px 0;
+      background: linear-gradient(90deg,#ff00c8,#8a3cff,#00f5ff);
+      box-shadow: 0 6px 30px rgba(138,60,255,0.12);
+    }
+
+    .grid-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .link-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(120,0,180,0.06);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .link-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    }
+
+    .icon-wrap {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    }
+
+    .link-info h3 { font-size: 16px; margin-bottom: 2px; }
+    .link-info p { font-size: 13px; color: #a8d8ff88; }
+
+    .btn-copy {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 22px;
+      color: #8fbfff66;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @keyframes floaty {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes neon-pulse {
+      from { text-shadow: 0 0 4px #00ffae, 0 0 10px #00ffae; }
+      to { text-shadow: 0 0 12px #00ffae, 0 0 20px #00ffae; }
+    }
+
+    .holo {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.025;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(0,255,200,0.06), transparent 10%),
+        radial-gradient(circle at 90% 80%, rgba(255,0,200,0.06), transparent 10%);
+    }
+
+    /* BLOCO DE PROPAGANDA IPTV */
+    .promo {
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(0,255,160,0.08), rgba(255,0,200,0.06));
+      border: 1px solid rgba(0,255,160,0.15);
+      box-shadow: 0 0 18px rgba(0,255,160,0.12);
+      text-align: center;
+      animation: neon-pulse 3s infinite alternate;
+    }
+    .promo h2 {
+      font-size: 22px;
+      color: #00ffae;
+      text-shadow: 0 0 6px #00ffae;
+      margin-bottom: 10px;
+    }
+    .promo p {
+      color: #cbe7ffcc;
+      margin: 6px 0;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .promo strong {
+      color: #ff00c8;
+      text-shadow: 0 0 6px #ff00c8;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="scanlines"></div>
+  <div class="card">
+    <div class="holo"></div>
+    <div class="header">
+      <div class="avatar" id="avatar">▀̿ ̿ Ĺ̯ ͡▀̿ ̿ </div>
+      <div class="title">
+        <h1 class="neon-green" id="name">>>> IPTV STREAMING 📺</h1>
+        <p class="lead neon-green"> Todos os Canais por apenas R$:29,99 </p>
+        <div class="neon-bar"></div>
+      </div>
+    </div>
+
+    <div class="grid-links">
+      <!-- Instagram -->
+      <a class="link-card" href="https://www.instagram.com/willamineneto/" target="_blank">
+        <div class="icon-wrap">📸</div>
+        <div class="link-info">
+          <h3>Instagram</h3>
+          <p>@willamineneto</p>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a class="link-card" href="https://wa.me/5591984743351" target="_blank">
+        <div class="icon-wrap">💬</div>
+        <div class="link-info">
+          <h3>WhatsApp</h3>
+          <p>+55 91 98474-3351</p>
+        </div>
+      </a>
+
+      <!-- Telegram -->
+      <a class="link-card" href="https://t.me/willamine" target="_blank">
+        <div class="icon-wrap">🚀</div>
+        <div class="link-info">
+          <h3>Telegram</h3>
+          <p>@willamine</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- BLOCO DE PROPAGANDA IPTV -->
+    <div class="promo">
+      <h2>🔥 CHEGOU O FUTURO DO ENTRETENIMENTO! 🔥</h2>
+      <p>🎬 <strong>WILL IPTV</strong> traz pra você:</p>
+      <p>✅ +15.000 Canais em HD, FULL HD e 4K</p>
+      <p>✅ Filmes, Séries e Lançamentos atualizados diariamente</p>
+      <p>✅ Canais adultos (opcional 🔒)</p>
+      <p>✅ Suporte 24h via WhatsApp</p>
+      <p>✅ Compatível com Smart TV, TV Box, Celular e PC</p>
+      <p>🚀 <strong>Teste GRÁTIS por 5h!</strong></p>
+      <p>💥 Qualidade, estabilidade e preço justo.</p>
+      <p>📱 <strong>Chame agora:</strong> <a href="https://wa.me/5591984743351" target="_blank" style="color:#00ffae;text-decoration:none;">WhatsApp Will IPTV</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
